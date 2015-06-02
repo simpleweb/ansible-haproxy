@@ -1,0 +1,34 @@
+---
+# This role installs HAProxy and configures it.
+
+- name: add backports repository
+  apt_repository: repo='deb http://ftp.debian.org/debian wheezy-backports main' state=present update_cache=yes
+  sudo: yes
+
+- name: Download and install haproxy and socat
+  apt: name={{ item }} state=present
+  with_items:
+  - haproxy
+  sudo: yes
+
+- name: Creates directory
+  file: path=/etc/ssl state=directory
+
+- name: Copy SSL certificate into place
+  copy:
+    content: "{{ ssl_certificate }}"
+    dest: "/etc/ssl/{{ app_name }}.pem"
+    owner: root
+    group: root
+    mode: 0600
+  sudo: yes
+
+- name: Configure the haproxy cnf file with hosts
+  template:
+    src: 'haproxy.cfg.j2'
+    dest: '/etc/haproxy/haproxy.cfg'
+  notify: restart haproxy
+  sudo: yes
+
+- service: name=haproxy state=running
+  sudo: yes
