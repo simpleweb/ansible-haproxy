@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Tom Holder
+  description: HAProxy installation for single app with good SSL rating
+  license: MIT
+  min_ansible_version: 1.5
+  platforms:
+  - name: Debian
+    versions:
+    - wheezy
+  categories:
+  - system
+  - web
+dependencies: []
+

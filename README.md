@@ -1,4 +1,4 @@
-# Ansible HAProxy Role for Debian Wheazy
+# Ansible HAProxy Role for Debian Wheezy
 
 This role achieves a good level of SSL security as tested by [SSLLabs](http://ssllabs.com/ssltest/).
 
@@ -14,7 +14,7 @@ haproxy:
 
 ### Limitations
 
-This role only works with Debian Wheazy for time being.
+This role only works with Debian Wheezy for time being.
 
 SSL is forced for all connections.
 
