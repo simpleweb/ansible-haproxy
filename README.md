@@ -12,6 +12,16 @@ haproxy:
   backend_port: "8080"
 ```
 
+### Added SSL certificate to Vault
+
+The vault seems to be a good place to securely store your cert. To do this you need to include it using multi-line syntax... this looks like:
+
+```
+ssl_certificate: |
+  -----BEGIN CERTIFICATE-----
+  REST OF CERT...
+```
+
 ### Limitations
 
 This role only works with Debian Wheezy for time being.
