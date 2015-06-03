@@ -30,7 +30,7 @@ backend nodes
     balance roundrobin
     option forwardfor
 {% for host in haproxy.backends %}
-    server {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host]['ansible_eth1']['ipv4']['address'] }}:{{ haproxy.backend_port }} check
+    server {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host]['ansible_eth1']['ipv4']['address'] }}:8080 check
 {% endfor %}
     http-request set-header X-Forwarded-Port %[dst_port]
     http-request add-header X-Forwarded-Proto https if { ssl_fc }

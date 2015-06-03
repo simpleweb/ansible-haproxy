@@ -9,7 +9,6 @@ app_name: my-app
 ssl_certificate: <full SSL chain including key>
 haproxy:
   backends: "{{ groups['production'] }}"
-  backend_port: "8080"
 ```
 
 ### Added SSL certificate to Vault
@@ -29,6 +28,8 @@ This role only works with Debian Wheezy for time being.
 SSL is forced for all connections.
 
 haproxy.backends specifies a group in your hosts. This entire group becomes your front-ends and looks for resulting server on eth1 on port specified by backend_port. We use rackspace a lot and eth1 is the internal network.
+
+Nginx must be running on port 8080 as the backend.
 
 ### Results
 
